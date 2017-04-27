@@ -31,7 +31,7 @@ var ASYNC_STORAGE_KEY = '--raven-js-global-error-payload--';
  * Strip device-specific IDs from React Native file:// paths
  */
 function normalizeUrl(url, pathStripRe) {
-    if (url.indexOf('/') != -1)
+    if (url.indexOf('/') !== -1)
         return url
             .replace(/^file\:\/\//, '')
             .replace(pathStripRe, '');
