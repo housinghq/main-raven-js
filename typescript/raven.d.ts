@@ -22,7 +22,7 @@ interface RavenOptions {
     /** The name of the server or device that the client is running on */
     serverName?: string;
 
-    /** List of messages to be fitlered out before being sent to Sentry. */
+    /** List of messages to be filtered out before being sent to Sentry. */
     ignoreErrors?: (RegExp | string)[];
 
     /** Similar to ignoreErrors, but will ignore errors from whole urls patching a regex pattern. */
@@ -39,7 +39,7 @@ interface RavenOptions {
         [id: string]: string;
     };
 
-    /** set to true to get the strack trace of your message */
+    /** set to true to get the stack trace of your message */
     stacktrace?: boolean;
 
     extra?: any;
@@ -61,6 +61,13 @@ interface RavenOptions {
 
     /** Override the default HTTP data transport handler. */
     transport?: (options: RavenTransportOptions) => void;
+
+    /** Enables/disables instrumentation of globals. */
+    instrument?: boolean | RavenInstrumentationOptions;
+}
+
+interface RavenInstrumentationOptions {
+    tryCatch?: boolean;
 }
 
 interface RavenStatic {
