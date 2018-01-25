@@ -257,7 +257,7 @@ TraceKit.report = (function reportModuleWrapper() {
     // slow slow IE to see if onerror occurs or not before reporting
     // this exception; otherwise, we will end up with an incomplete
     // stack trace
-    setTimeout(function() {
+    setTimeout(function () {
       if (lastException === ex) {
         processLastException();
       }
@@ -373,7 +373,7 @@ TraceKit.computeStackTrace = (function computeStackTraceWrapper() {
     if (typeof ex.stack === 'undefined' || !ex.stack) return;
 
     var chrome = /^\s*at (.*?) ?\(((?:file|https?|blob|chrome-extension|native|eval|webpack|<anonymous>|[a-z]:|\/).*?)(?::(\d+))?(?::(\d+))?\)?\s*$/i,
-      gecko = /^\s*(.*?)(?:\((.*?)\))?(?:^|@)((?:file|https?|blob|chrome|webpack|resource|\[native).*?|[^@]*bundle)(?::(\d+))?(?::(\d+))?\s*$/i,
+      gecko = /^\s*(.*?)(?:\((.*?)\))?(?:^|@)((?:file|https?|blob|chrome).*?|[^@]*bundle)(?::(\d+))?(?::(\d+))?\s*$/i,
       winjs = /^\s*at (?:((?:\[object object\])?.+) )?\(?((?:file|ms-appx(?:-web)|https?|webpack|blob):.*?):(\d+)(?::(\d+))?\)?\s*$/i,
       // Used to additionally parse URL/line/column from eval frames
       geckoEval = /(\S+) line (\d+)(?: > eval line \d+)* > eval/i,
@@ -548,7 +548,7 @@ TraceKit.computeStackTrace = (function computeStackTraceWrapper() {
       if (typeof item.func === 'undefined') {
         try {
           item.func = parts.input.substring(0, parts.input.indexOf('{'));
-        } catch (e) {}
+        } catch (e) { }
       }
 
       if (funcs['' + curr]) {
